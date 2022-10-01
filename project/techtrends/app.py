@@ -113,6 +113,12 @@ def create():
 
 # start the application on port 3111
 if __name__ == "__main__":
-   # Stream logs to a file, and set the default log level to DEBUG
-   logging.basicConfig(filename='app.log',level=logging.DEBUG)
-   app.run(host='0.0.0.0', port='3111')
+    # Stream logs to a file, and set the default log level to DEBUG
+    # logging.basicConfig(filename='app.log',level=logging.DEBUG)
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s",
+        handlers=[
+           logging.FileHandler("app.log"),
+           logging.StreamHandler()
+       ]
+    )
+    app.run(debug=True, host='0.0.0.0', port='3111')

@@ -24,6 +24,6 @@ jobs:
       name: Build and push the Docker image
       uses: docker/build-push-action@v3
       with:
-        context: .
+        context: ./project/techtrends
         push: true
         tags: techtrends:latest

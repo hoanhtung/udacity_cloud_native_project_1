@@ -26,4 +26,4 @@ jobs:
       with:
         context: "./project"
         push: true
-        tags: techtrends:latest
+        tags: hoanhtung/techtrends:latest

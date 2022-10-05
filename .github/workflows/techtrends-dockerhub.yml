@@ -24,6 +24,6 @@ jobs:
       name: Build and push the Docker image
       uses: docker/build-push-action@v3
       with:
-        context: "./udacity_cloud_native_project_1/project"
+        context: "udacity_cloud_native_project_1/project"
         push: true
         tags: techtrends:latest

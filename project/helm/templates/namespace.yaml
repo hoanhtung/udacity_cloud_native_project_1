@@ -3,4 +3,4 @@ kind: Namespace
 metadata:
   labels:
     tier: udacity
-  name: sandbox
+  name: {{ .Values.namespace.name }}

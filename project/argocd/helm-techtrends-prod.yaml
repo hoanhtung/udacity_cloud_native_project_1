@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: techtrends-prod
+  namespace: argocd
+spec:
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    helm:
+      valueFiles:
+        - values-prod.yaml
+    path: project/helm/template
+    repoURL: https://github.com/hoanhtung/udacity_cloud_native_project_1
+    targetRevision: HEAD

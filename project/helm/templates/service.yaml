@@ -4,13 +4,13 @@ metadata:
   labels:
     k8s-app: techtrends-app
   name: techtrends-app
-  namespace: sandbox
+  namespace: {{ .Values.namespace.name }}
 spec:
   ports:
     - name: http
-      port: 4111
-      protocol: TCP
-      targetPort: 3111
+      port: {{ .Values.service.port }}
+      protocol: {{ .Values.service.protocol }}
+      targetPort: {{ .Values.service.targetPort }}
   selector:
     k8s-app: techtrends-app
-  type: ClusterIP
+  type: {{ .Values.service.type }}

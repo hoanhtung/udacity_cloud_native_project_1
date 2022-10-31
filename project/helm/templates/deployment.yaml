@@ -4,9 +4,9 @@ metadata:
   labels:
     k8s-app: techtrends-app
   name: techtrends-app
-  namespace: sandbox
+  namespace: {{ .Values.namespace.name }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
       k8s-app: techtrends-app
@@ -16,19 +16,15 @@ spec:
         k8s-app: techtrends-app
     spec:
       containers:
-        - image: hoanhtung/techtrends:latest
-          imagePullPolicy: IfNotPresent
+        - image: {{ .Values.image.repository }}:{{ .Values.image.repository }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
           name: techtrends-app
           resources:
-            requests:
-              cpu: 250m
-              memory: 64Mi
-            limits:
-              cpu: 500m
-              memory: 128Mi
+            requests: {{ .Values.resources.requests }}
+            limits: {{ .Values.resources.limits }}
           livenessProbe:
             httpGet:
-              path: /healthz
+              path: {{ .Values.livenessProbe.path }}
               port: 3111
           ports:
             - containerPort: 3111

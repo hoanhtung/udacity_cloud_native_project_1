@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    k8s-app: techtrends-app
+  name: techtrends-app
+  namespace: sandbox
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: techtrends-app
+  template:
+    metadata:
+      labels:
+        k8s-app: techtrends-app
+    spec:
+      containers:
+        - image: hoanhtung/techtrends:latest
+          imagePullPolicy: IfNotPresent
+          name: techtrends-app
+          resources:
+            requests:
+              cpu: 250m
+              memory: 64Mi
+            limits:
+              cpu: 500m
+              memory: 128Mi
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 3111
+          ports:
+            - containerPort: 3111
+

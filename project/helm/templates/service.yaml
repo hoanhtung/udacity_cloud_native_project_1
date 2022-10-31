@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    k8s-app: techtrends-app
+  name: techtrends-app
+  namespace: sandbox
+spec:
+  ports:
+    - name: http
+      port: 4111
+      protocol: TCP
+      targetPort: 3111
+  selector:
+    k8s-app: techtrends-app
+  type: ClusterIP

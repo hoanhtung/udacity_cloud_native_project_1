@@ -12,6 +12,6 @@ spec:
     helm:
       valueFiles:
         - values-staging.yaml
-    path: project/helm/templates
+    path: project/helm
     repoURL: https://github.com/hoanhtung/udacity_cloud_native_project_1
     targetRevision: HEAD

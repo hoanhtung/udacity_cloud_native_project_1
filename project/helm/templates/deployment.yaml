@@ -20,12 +20,16 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           name: techtrends-app
           resources:
-            requests: {{ .Values.resources.requests }}
-            limits: {{ .Values.resources.limits }}
+            requests:
+              cpu: {{ .Values.resources.requests.cpu }}
+              memory: {{ .Values.resources.requests.memory }}
+            limits:
+              cpu: {{ .Values.resources.limits.cpu}}
+              memory: {{ .Values.resources.limits.memory }}
           livenessProbe:
             httpGet:
               path: {{ .Values.livenessProbe.path }}
-              port: 3111
+              port: {{ .Values.containerPort }}
           ports:
-            - containerPort: 3111
+            - containerPort: {{ .Values.containerPort }}
 

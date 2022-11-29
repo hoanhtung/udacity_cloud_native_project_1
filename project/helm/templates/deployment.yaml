@@ -16,7 +16,7 @@ spec:
         k8s-app: techtrends-app
     spec:
       containers:
-        - image: {{ .Values.image.repository }}:{{ .Values.image.repository }}
+        - image: {{ .Values.image.repository }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           name: techtrends-app
           resources:
